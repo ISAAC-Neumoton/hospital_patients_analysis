@@ -41,7 +41,7 @@ This project analyzes patient utilization, outcomes, operational efficiency, and
 * [15. How to Run the Project](#15-how-to-run-the-project)
   
 
-# 🏥 Hospital Patient Analytics Project
+# Hospital Patient Analytics Project
 
 ---
 
