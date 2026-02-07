@@ -39,92 +39,92 @@ This project analyzes patient utilization, outcomes, operational efficiency, and
 * [13. Key Insights](#13-key-insights)
 * [14. Tools & Technologies](#14-tools--technologies)
 * [15. How to Run the Project](#15-how-to-run-the-project)
+  
+
+# 🏥 Hospital Patient Analytics Project
 
 ---
 
 ## 1. Project Overview
 
-This project uses SQL analytics to extract actionable insights from hospital patient data including:
+This project is an end-to-end **SQL-driven healthcare analytics solution** focused on hospital patient data.  
+It covers **database design, data quality auditing, ETL, and advanced analytical querying** to extract actionable insights related to utilization, mortality, insurance coverage, and clinical efficiency.
 
-- Patient utilization and readmissions  
-- Mortality rates by age group  
-- Departmental efficiency (LOS analysis)  
-- Insurance claims and financial performance  
-- Seasonal admission trends  
+The project follows a **phase-based analytical lifecycle**, mirroring real-world data engineering and analytics workflows.
 
-![Project Overview](images/project_overview.png)
 
 ---
 
 ## 2. Business Objectives
 
-- Identify high-utilization patients (super-utilizers)  
-- Measure mortality rates by age group  
-- Analyze length of stay (LOS) per department  
-- Rank departments by utilization and claim costs  
-- Evaluate insurance payer contributions  
-- Detect seasonal patterns in hospital admissions  
-- Understand procedure distribution across demographics  
+- Improve visibility into **patient admission patterns**
+- Identify **high-risk and high-resource patients**
+- Analyze **mortality and utilization trends**
+- Evaluate **insurance and financial coverage disparities**
+- Measure **clinical efficiency using Length of Stay (LOS)**
 
 ---
 
 ## 3. Dataset Description
 
-The hospital dataset includes:
+The dataset simulates hospital operational data and includes:
 
-- `patients_demographics` – Patient personal and demographic data  
-- `admissions` – Hospital visits, encounter details, billing  
-- `procedures` – Procedures performed per patient visit  
-- `payers` – Insurance provider information  
-- `organizations` – Hospital/clinic details  
+- Patient demographics
+- Admissions and discharge details
+- Procedures performed
+- Insurance and claim records
+- Departmental activity
 
-![Dataset Schema](images/dataset_tables.png)
+![Schema Overview](images/schema_overview.png)
 
 ---
 
 ## 4. Entity Relationship Diagram (ERD)
 
-Shows relationships between patients, admissions, procedures, hospitals, and payers.
+The ERD defines relationships between patients, admissions, procedures, departments, and insurance entities.
 
-![ER Diagram](images/erd_diagram.jpeg)
+![ERD Diagram](images/erd_diagram.png)
 
 ---
 
 ## 5. Phase 1: Database & Schema Design
 
-- Creation of `hospital_patients_db` database  
-- Tables: `patients_demographics`, `admissions`, `procedures`, `payers`, `organizations`  
-- Primary keys and foreign key constraints established  
+- Normalized relational schema
+- Primary and foreign key constraints
+- Referential integrity enforcement
 
-![Database Schema](images/database_schema.png)
+![Schema Design](images/schema_overview.png)
 
 ---
 
 ## 6. Phase 2: Data Quality & Profiling (The Unpivot Method)
 
+This phase focuses on identifying structural and content-level data quality issues.
+
 ### 6.1 Missing Data Audit
 
-- Count of null values in each table column  
-- Identification of data quality gaps for patients, admissions, and procedures  
+- Column-level null profiling
+- Unpivot-based completeness checks
 
-![Missing Data](images/missing_data.png)
+![Data Quality Unpivot](images/data_quality_unpivot.png)
 
-### 6.2 Orphan Record Detection
+### 6.2 Orphan Record Detection (Admissions vs. Procedures)
 
-- Identify admissions without matching procedures or patients  
-- Ensures referential integrity  
+- Detection of procedures without valid admissions
+- Referential integrity validation
 
-![Orphan Records](images/orphan_records.png)
+![Procedure Check](images/proc_procedure_check.png)
 
 ---
 
 ## 7. Phase 3: Data Cleaning & ETL
 
-- Standardize zip codes and marital status in `patients_demographics`  
-- Fill missing `reason_code` and `reason_description` in `procedures` and `admissions`  
-- Prepare clean dataset for analytics  
+- Removal of invalid records
+- Standardization of categorical fields
+- Deduplication logic
+- Transformation into analytics-ready tables
 
-![Data Cleaning](images/data_cleaning.png)
+![Readmission Distribution](images/readmission_distribution.png)
 
 ---
 
@@ -132,15 +132,15 @@ Shows relationships between patients, admissions, procedures, hospitals, and pay
 
 ### 8.1 Departmental Visit Volume %
 
-- Total patient visits per `encounter_class`  
-- Percentage of total visits per department  
+- Visit share by department
+- Operational load analysis
 
-![Department Visits](images/department_visits.png)
+![Department Visit Volume](images/department_visit_volume.png)
 
-### 8.2 Age Group Segmentation
+### 8.2 Age Group Segmentation (Pediatric, Adult, Geriatric)
 
-- Classify patients by age at first admission: Pediatric, Adult, Geriatric  
-- Count unique patients by gender and age group  
+- Age-based cohort creation
+- Utilization trends by age group
 
 ![Age Group Segmentation](images/age_group_segmentation.png)
 
@@ -150,23 +150,21 @@ Shows relationships between patients, admissions, procedures, hospitals, and pay
 
 ### 9.1 Mortality Rates by Age Group
 
-- Calculate total admissions and deaths per age group  
-- Mortality percentage  
+- Mortality distribution across age cohorts
 
-![Mortality Rates](images/mortality_rates.png)
+![Mortality Rate](images/mortality_rate.png)
 
-### 9.2 Super-Utilizer Identification
+### 9.2 Super-Utilizer Identification (>5 Visits)
 
-- Patients with more than 5 admissions  
-- Include first and last visit dates, city, and marital status  
+- Patients with excessive hospital usage
 
-![Super-Utilizers](images/super_utilizers.png)
+![Super Utilizers](images/super_utilizers.png)
 
-### 9.3 Demographic Utilization
+### 9.3 Demographic Utilization (Race & Gender Admission Trends)
 
-- Procedures and admissions distribution by race and gender  
+- Admission volume by race and gender
 
-![Demographics Utilization](images/demographics_utilization.png)
+![Race Procedure Check](images/race_procedure_check.png)
 
 ---
 
@@ -174,13 +172,27 @@ Shows relationships between patients, admissions, procedures, hospitals, and pay
 
 ### 10.1 Payer Market Share by Race
 
+- Insurance coverage disparity analysis
+
+![Insurance Contribution Rank](images/insurance_contribution_rank.png)
+
 ### 10.2 Regional Insurance Utilization (City Ranking)
+
+- Geographic insurance usage comparison
+
+![Insurance Usage per City](images/insurance_usage_per_city.png)
 
 ### 10.3 Insurance Pay-outs by Gender
 
+- Claim amounts grouped by gender
+
+![Total Claim per Gender](images/total_claim_per_gender.png)
+
 ### 10.4 Multi-Insurance Coverage Patients
 
-![Financial Analytics](images/financial_analytics.png)
+- Patients covered by multiple insurers
+
+![Insurance Usage per Patient](images/insurance_usage_per_patient.png)
 
 ---
 
@@ -188,12 +200,14 @@ Shows relationships between patients, admissions, procedures, hospitals, and pay
 
 ### 11.1 Average Length of Stay (LOS) per Department
 
+- Department-level efficiency analysis
+
+![LOS by Department](images/avg_los_by_department.png)
+
 ### 11.2 LOS Outlier Detection using Window Functions
 
-- Categorize stays: Short (<24h), Medium (24–72h), Long (>72h)  
-- Detect outliers compared to department averages  
+- Extreme stay detection using SQL analytics
 
-![LOS Analysis](images/los_analysis.png)
 ![LOS Outliers](images/los_outliers.png)
 
 ---
@@ -202,46 +216,51 @@ Shows relationships between patients, admissions, procedures, hospitals, and pay
 
 ### 12.1 High-Resource Patient Ranking (Longest Stays)
 
-- Top 20 patients with the longest stays  
+- Ranking patients by total LOS
 
-![High-Resource Patients](images/high_resource_patients.png)
+![Longest Stays](images/longest_stays.png)
 
 ### 12.2 Monthly Admission Trends & Annual Seasonality
 
-- Monthly hospital admissions for seasonality trends  
+- Temporal admission patterns
 
-![Seasonality Trends](images/seasonality_trends.png)
+![Monthly Admission Trends](images/monthly_admission_trends.png)
 
 ---
 
 ## 13. Key Insights
 
-- Certain departments have higher visit volumes than others  
-- Pediatric and Geriatric patients show different mortality trends  
-- Super-utilizers significantly impact resource allocation  
-- Insurance contributions vary by payer and region  
-- Length of stay outliers may indicate efficiency gaps  
-- Seasonal trends highlight peak admission periods  
+- Small patient group accounts for disproportionate resource usage
+- Mortality risk increases significantly with age
+- Insurance coverage varies strongly by race and location
+- Certain departments show consistently higher LOS variance
 
 ---
 
 ## 14. Tools & Technologies
 
-- **SQL Server (T-SQL)** – Data storage and queries  
-- **SSMS** – Query execution and visualization  
-- **Excel / Power BI (Optional)** – Reporting and charts  
+- **SQL (Window Functions, CTEs, Joins)**
+- **Relational Database Design**
+- **Data Profiling & ETL Techniques**
+- **Analytical Query Optimization**
+- **Git & GitHub**
 
 ---
 
 ## 15. How to Run the Project
 
-1. Restore `hospital_patients_db` in SQL Server  
-2. Run SQL scripts in order:  
-   - `schema.sql`  
-   - `data_cleaning.sql`  
-   - `analytics_phases_1-8.sql`  
-3. Review query results in SSMS or export to reporting tools  
-4. Use images in `images/` folder to visualize results  
+1. Clone the repository  
+2. Load SQL scripts from the `database/` and `query/` folders  
+3. Execute schema scripts first  
+4. Run analytics queries phase by phase  
+5. Review visual outputs in the `images/` directory
 
 ---
 
+📁 **Project Structure**
+```text
+hospital_patients_analysis/
+│── database/
+│── query/
+│── images/
+│── README.md
