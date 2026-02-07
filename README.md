@@ -83,7 +83,7 @@ The dataset simulates hospital operational data and includes:
 
 The ERD defines relationships between patients, admissions, procedures, departments, and insurance entities.
 
-![ERD Diagram](images/erd_diagram.png)
+![ERD Diagram](images/erd_diagram.jpeg)
 
 ---
 
@@ -113,7 +113,6 @@ This phase focuses on identifying structural and content-level data quality issu
 - Detection of procedures without valid admissions
 - Referential integrity validation
 
-![Procedure Check](images/proc_procedure_check.png)
 
 ---
 
@@ -158,7 +157,7 @@ This phase focuses on identifying structural and content-level data quality issu
 
 - Patients with excessive hospital usage
 
-![Super Utilizers](images/super_utilizers.png)
+![Super Utilizers](images/longest_stays.png)
 
 ### 9.3 Demographic Utilization (Race & Gender Admission Trends)
 
