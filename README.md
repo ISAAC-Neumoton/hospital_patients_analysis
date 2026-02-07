@@ -86,7 +86,7 @@ The hospital dataset includes:
 
 Shows relationships between patients, admissions, procedures, hospitals, and payers.
 
-![ER Diagram](images/er_diagram.png)
+![ER Diagram](images/erd_diagram.jpeg)
 
 ---
 
