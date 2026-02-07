@@ -2,12 +2,12 @@
 
 ![Project Banner](images/banner.jpg)
 
-A comprehensive **end-to-end hospital data analytics project** built using **Microsoft SQL Server (T-SQL)**.  
+**End-to-end hospital data analytics project** built using **Microsoft SQL Server **.  
 This project analyzes patient utilization, outcomes, operational efficiency, and financial performance across multiple analytical phases.
 
 ---
 
-## 📑 Table of Contents
+## Table of Contents
 
 * [1. Project Overview](#1-project-overview)
 * [2. Business Objectives](#2-business-objectives)
