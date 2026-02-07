@@ -1,6 +1,6 @@
 # Hospital Analytics SQL Project
 
-![Project Banner](images/banner.png)
+![Project Banner](images/banner.jpg)
 
 A comprehensive **end-to-end hospital data analytics project** built using **Microsoft SQL Server (T-SQL)**.  
 This project analyzes patient utilization, outcomes, operational efficiency, and financial performance across multiple analytical phases.
