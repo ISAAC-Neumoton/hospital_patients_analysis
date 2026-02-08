@@ -65,43 +65,52 @@ Below is the **original phase and task structure** used as the guiding framework
 - Assign appropriate data types
 - Define primary keys where applicable
 - Load all CSV files successfully
+  
 **Phase 2: Data Understanding and Validation**
 - Review all column definitions
 - Identify missing values in critical fields
 - Validate patient and visit relationships
 - Check for nulls, duplicates, and orphan records
+
 **Phase 3: Core Patient Analysis Tasks**
 - Total number of patients
 - Patient counts by gender and age group
 - Admissions by department
 - Admission trends by month and year
+  
 **Phase 4: Intermediate Clinical and Operational Analysis**
 - Departments with highest admissions
 - Average length of stay by department
 - Most common diagnoses
-- Patient readmission counts
+- Patient readmission count
+  
 **Phase 5: Multi-Table Analysis**
 - Patient ↔ Admission joins
 - Admission ↔ Department joins
 - Diagnosis ↔ Demographic analysis
+  
 **Phase 6: Window Function Application**
 - Rank departments by patient volume
 - Rank entities using analytical functions
 - Compare individual patient stays to department averages
+  
 **Phase 7: Date and Conditional Logic**
 - Length of stay calculations
 - Stay categorization (short, medium, long)
 - Identification of currently admitted patients
+  
 **Phase 8: Reporting and Insight Questions**
 - Top 20 longest hospital stays
 - Departments with highest average LOS
 - Monthly admission seasonality
 - Diagnosis patterns across age groups
+  
 **Phase 9: Documentation**
 - Project overview and healthcare context
 - Data dictionary
 - Consolidated SQL scripts
 - Insight explanations in plain language
+  
 **Phase 10: Final Submission**
 - Clean and readable SQL scripts
 - Clear analytical flow
