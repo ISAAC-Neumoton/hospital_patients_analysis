@@ -1,265 +1,232 @@
-# Hospital Analytics SQL Project
+# Hospital Patient Record System — SQL Analytics Portfolio Project
 
 ![Project Banner](images/banner.jpg)
 
-**End-to-end hospital data analytics project** built using **Microsoft SQL Server **.  
-This project analyzes patient utilization, outcomes, operational efficiency, and financial performance across multiple analytical phases.
+An intermediate SQL analytics portfolio project focused on healthcare operations and patient records.  
+This project demonstrates database design, data quality validation, multi-table analysis, window functions, and healthcare insight generation using real hospital data.
 
 ---
 
-## Table of Contents
+## 📑 Table of Contents
 
-* [1. Project Overview](#1-project-overview)
-* [2. Business Objectives](#2-business-objectives)
-* [3. Dataset Description](#3-dataset-description)
-* [4. Entity Relationship Diagram (ERD)](#4-entity-relationship-diagram-erd)
-* [5. Phase 1: Database & Schema Design](#5-phase-1-database--schema-design)
-* [6. Phase 2: Data Quality & Profiling (The Unpivot Method)](#6-phase-2-data-quality--profiling-the-unpivot-method)
-    * [6.1 Missing Data Audit](#61-missing-data-audit)
-    * [6.2 Orphan Record Detection (Admissions vs. Procedures)](#62-orphan-record-detection)
-* [7. Phase 3: Data Cleaning & ETL](#7-phase-3-data-cleaning--etl)
-* [8. Phase 4: Descriptive Analytics & Patient Segmentation](#8-phase-4-descriptive-analytics--patient-segmentation)
-    * [8.1 Departmental Visit Volume %](#81-departmental-visit-volume)
-    * [8.2 Age Group Segmentation (Pediatric, Adult, Geriatric)](#82-age-group-segmentation)
-* [9. Phase 5: Utilization & Mortality Analysis](#9-phase-5-utilization--mortality-analysis)
-    * [9.1 Mortality Rates by Age Group](#91-mortality-rates-by-age-group)
-    * [9.2 Super-Utilizer Identification (>5 Visits)](#92-super-utilizer-identification)
-    * [9.3 Demographic Utilization (Race & Gender Admission Trends)](#93-demographic-utilization)
-* [10. Phase 6: Financial & Insurance Analytics](#10-phase-6-financial--insurance-analytics)
-    * [10.1 Payer Market Share by Race](#101-payer-market-share-by-race)
-    * [10.2 Regional Insurance Utilization (City Ranking)](#102-regional-insurance-utilization)
-    * [10.3 Insurance Pay-outs by Gender](#103-insurance-pay-outs-by-gender)
-    * [10.4 Multi-Insurance Coverage Patients](#104-multi-insurance-coverage-patients)
-* [11. Phase 7: Clinical Efficiency & LOS Variance](#11-phase-7-clinical-efficiency--los-variance)
-    * [11.1 Average Length of Stay (LOS) per Department](#111-average-length-of-stay-per-department)
-    * [11.2 LOS Outlier Detection using Window Functions](#112-los-outlier-detection)
-* [12. Phase 8: High-Resource & Seasonality Analysis](#12-phase-8-high-resource--seasonality-analysis)
-    * [12.1 High-Resource Patient Ranking (Longest Stays)](#121-high-resource-patient-ranking)
-    * [12.2 Monthly Admission Trends & Annual Seasonality](#122-monthly-admission-trends)
-* [13. Key Insights](#13-key-insights)
-* [14. Tools & Technologies](#14-tools--technologies)
-* [15. How to Run the Project](#15-how-to-run-the-project)
-  
-
-# Hospital Patient Analytics Project
+* [Project Overview](#project-overview)
+* [Business Objectives](#business-objectives)
+* [Dataset Description](#dataset-description)
+* [Entity Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
+* [Phase 1: Database & Schema Design](#phase-1-database--schema-design)
+* [Phase 2: Data Quality & Profiling](#phase-2-data-quality--profiling)
+  * [Missing Data Audit](#missing-data-audit)
+  * [Orphan Record Detection (Admissions vs. Procedures)](#orphan-record-detection-admissions-vs-procedures)
+* [Phase 3: Core Patient Analysis – Data Cleaning & ETL](#phase-3-core-patient-analysis--data-cleaning--etl)
+* [Phase 4: Intermediate Clinical & Operational Analysis](#phase-4-intermediate-clinical--operational-analysis)
+  * [Departmental Visit Volume](#departmental-visit-volume)
+  * [Age Group Segmentation](#age-group-segmentation)
+* [Phase 5: Utilization & Mortality Analysis](#phase-5-utilization--mortality-analysis)
+  * [Mortality Rates by Age Group](#mortality-rates-by-age-group)
+  * [Super-Utilizer Identification](#super-utilizer-identification)
+  * [Demographic Utilization Trends](#demographic-utilization-trends)
+* [Phase 6: Financial & Insurance Analytics](#phase-6-financial--insurance-analytics)
+  * [Payer Market Share by Race](#payer-market-share-by-race)
+  * [Insurance Utilization by City](#insurance-utilization-by-city)
+  * [Total Claims by Gender](#total-claims-by-gender)
+  * [Multi-Insurance Coverage](#multi-insurance-coverage)
+* [Phase 7: Clinical Efficiency & LOS Variance](#phase-7-clinical-efficiency--los-variance)
+  * [Average LOS per Department](#average-los-per-department)
+  * [LOS Outlier Detection](#los-outlier-detection)
+* [Phase 8: High-Resource & Seasonality Analysis](#phase-8-high-resource--seasonality-analysis)
+  * [Longest Hospital Stays](#longest-hospital-stays)
+  * [Monthly Admission Trends](#monthly-admission-trends)
+* [Key Insights](#key-insights)
+* [Tools & Technologies](#tools--technologies)
+* [How to Run the Project](#how-to-run-the-project)
+* [Database Backups](#database-backups)
 
 ---
 
-## 1. Project Overview
+## Project Overview
 
-This project is an end-to-end **SQL-driven healthcare analytics solution** focused on hospital patient data.  
-It covers **database design, data quality auditing, ETL, and advanced analytical querying** to extract actionable insights related to utilization, mortality, insurance coverage, and clinical efficiency.
-
-The project follows a **phase-based analytical lifecycle**, mirroring real-world data engineering and analytics workflows.
-
-
----
-
-## 2. Business Objectives
-
-- Improve visibility into **patient admission patterns**
-- Identify **high-risk and high-resource patients**
-- Analyze **mortality and utilization trends**
-- Evaluate **insurance and financial coverage disparities**
-- Measure **clinical efficiency using Length of Stay (LOS)**
-
----
-
-## 3. Dataset Description
-
-The dataset simulates hospital operational data and includes:
-
-- Patient demographics
-- Admissions and discharge details
-- Procedures performed
-- Insurance and claim records
-- Departmental activity
+This project builds an analytics layer on top of hospital patient records to support operational reporting and clinical insight generation.  
+The analysis mirrors real hospital data workflows handled by healthcare analytics teams.
 
 ![Schema Overview](images/schema_overview.png)
 
 ---
 
-## 4. Entity Relationship Diagram (ERD)
+## Business Objectives
 
-The ERD defines relationships between patients, admissions, procedures, departments, and insurance entities.
-
-![ERD Diagram](images/erd_diagram.jpeg)
-
----
-
-## 5. Phase 1: Database & Schema Design
-
-- Normalized relational schema
-- Primary and foreign key constraints
-- Referential integrity enforcement
-
-![Schema Design](images/schema_overview.png)
+- Analyze patient demographics and admission behavior  
+- Measure departmental utilization and efficiency  
+- Identify high-risk and high-resource patients  
+- Evaluate insurance usage and claim distributions  
+- Translate SQL outputs into actionable healthcare insights  
 
 ---
 
-## 6. Phase 2: Data Quality & Profiling (The Unpivot Method)
+## Dataset Description
 
-This phase focuses on identifying structural and content-level data quality issues.
+The dataset is sourced from Kaggle and represents a hospital patient record system including:
 
-### 6.1 Missing Data Audit
+- Patient demographics  
+- Admission and discharge records  
+- Diagnoses and procedures  
+- Department and encounter details  
+- Insurance and billing information  
 
-- Column-level null profiling
-- Unpivot-based completeness checks
-
-![Data Quality Unpivot](images/data_quality_unpivot.png)
-
-### 6.2 Orphan Record Detection (Admissions vs. Procedures)
-
-- Detection of procedures without valid admissions
-- Referential integrity validation
-
+All columns were reviewed prior to analysis to ensure correct interpretation.
 
 ---
 
-## 7. Phase 3: Data Cleaning & ETL
+## Entity Relationship Diagram (ERD)
 
-- Removal of invalid records
-- Standardization of categorical fields
-- Deduplication logic
-- Transformation into analytics-ready tables
-
-![Readmission Distribution](images/readmission_distribution.png)
+![ER Diagram](images/er_diagram.jpeg)
 
 ---
 
-## 8. Phase 4: Descriptive Analytics & Patient Segmentation
+## Phase 1: Database & Schema Design
 
-### 8.1 Departmental Visit Volume %
+- Created a dedicated SQL Server database  
+- Designed tables aligned with CSV structures  
+- Assigned appropriate data types  
+- Defined primary keys  
+- Loaded all data successfully  
 
-- Visit share by department
-- Operational load analysis
+![Database Schema](images/schema_overview.png)
 
-![Department Visit Volume](images/department_visit_volume.png)
+---
 
-### 8.2 Age Group Segmentation (Pediatric, Adult, Geriatric)
+## Phase 2: Data Quality & Profiling
 
-- Age-based cohort creation
-- Utilization trends by age group
+### Missing Data Audit
+
+Critical fields such as diagnosis, discharge dates, and insurance attributes were audited for missing values.
+
+![Missing Data Audit](images/data_quality_unpivot.png)
+
+### Orphan Record Detection (Admissions vs. Procedures)
+
+This check identifies **procedures that do not have a matching admission record**, ensuring referential integrity between clinical events.
+
+![Orphan Records](images/race_procedure_check.png)
+
+---
+
+## Phase 3: Core Patient Analysis – Data Cleaning & ETL
+
+- Standardized demographic fields  
+- Created derived attributes (age group, visit counts)  
+- Prepared clean analytical datasets for reporting  
+
+---
+
+## Phase 4: Intermediate Clinical & Operational Analysis
+
+### Departmental Visit Volume
+
+![Department Visits](images/department_visit_volume.png)
+
+### Age Group Segmentation
 
 ![Age Group Segmentation](images/age_group_segmentation.png)
 
 ---
 
-## 9. Phase 5: Utilization & Mortality Analysis
+## Phase 5: Utilization & Mortality Analysis
 
-### 9.1 Mortality Rates by Age Group
-
-- Mortality distribution across age cohorts
+### Mortality Rates by Age Group
 
 ![Mortality Rate](images/mortality_rate.png)
 
-### 9.2 Super-Utilizer Identification (>5 Visits)
+### Super-Utilizer Identification
 
-- Patients with excessive hospital usage
+Patients with more than five admissions were identified as high utilizers.
 
-![Super Utilizers](images/longest_stays.png)
+![Super Utilizers](images/super_utilizers.png)
 
-### 9.3 Demographic Utilization (Race & Gender Admission Trends)
+### Demographic Utilization Trends
 
-- Admission volume by race and gender
-
-![Race Procedure Check](images/race_procedure_check.png)
+![Admissions by Race](images/admission_per_race.png)
 
 ---
 
-## 10. Phase 6: Financial & Insurance Analytics
+## Phase 6: Financial & Insurance Analytics
 
-### 10.1 Payer Market Share by Race
+### Payer Market Share by Race
 
-- Insurance coverage disparity analysis
+![Insurance Contribution](images/insurance_contribution_rank.png)
 
-![Insurance Contribution Rank](images/insurance_contribution_rank.png)
+### Insurance Utilization by City
 
-### 10.2 Regional Insurance Utilization (City Ranking)
+![Insurance City Usage](images/insurance_usage_per_city.png)
 
-- Geographic insurance usage comparison
+### Total Claims by Gender
 
-![Insurance Usage per City](images/insurance_usage_per_city.png)
+![Claims by Gender](images/total_claim_per_gender.png)
 
-### 10.3 Insurance Pay-outs by Gender
+### Multi-Insurance Coverage
 
-- Claim amounts grouped by gender
-
-![Total Claim per Gender](images/total_claim_per_gender.png)
-
-### 10.4 Multi-Insurance Coverage Patients
-
-- Patients covered by multiple insurers
-
-![Insurance Usage per Patient](images/insurance_usage_per_patient.png)
+![Insurance per Patient](images/insurance_usage_per_patient.png)
 
 ---
 
-## 11. Phase 7: Clinical Efficiency & LOS Variance
+## Phase 7: Clinical Efficiency & LOS Variance
 
-### 11.1 Average Length of Stay (LOS) per Department
+### Average LOS per Department
 
-- Department-level efficiency analysis
+![Average LOS](images/avg_los_by_department.png)
 
-![LOS by Department](images/avg_los_by_department.png)
-
-### 11.2 LOS Outlier Detection using Window Functions
-
-- Extreme stay detection using SQL analytics
+### LOS Outlier Detection
 
 ![LOS Outliers](images/los_outliers.png)
 
 ---
 
-## 12. Phase 8: High-Resource & Seasonality Analysis
+## Phase 8: High-Resource & Seasonality Analysis
 
-### 12.1 High-Resource Patient Ranking (Longest Stays)
-
-- Ranking patients by total LOS
+### Longest Hospital Stays
 
 ![Longest Stays](images/longest_stays.png)
 
-### 12.2 Monthly Admission Trends & Annual Seasonality
+### Monthly Admission Trends
 
-- Temporal admission patterns
-
-![Monthly Admission Trends](images/monthly_admission_trends.png)
+![Monthly Trends](images/monthly_admission_trends.png)
 
 ---
 
-## 13. Key Insights
+## Key Insights
 
-- Small patient group accounts for disproportionate resource usage
-- Mortality risk increases significantly with age
-- Insurance coverage varies strongly by race and location
-- Certain departments show consistently higher LOS variance
-
----
-
-## 14. Tools & Technologies
-
-- **SQL (Window Functions, CTEs, Joins)**
-- **Relational Database Design**
-- **Data Profiling & ETL Techniques**
-- **Analytical Query Optimization**
-- **Git & GitHub**
+- Geriatric patients show higher mortality and readmission rates  
+- Certain departments consistently exhibit longer lengths of stay  
+- Admissions demonstrate clear seasonal patterns  
+- Insurance utilization varies significantly across demographics  
 
 ---
 
-## 15. How to Run the Project
+## Tools & Technologies
+
+- Microsoft SQL Server (T-SQL)  
+- Kaggle Healthcare Dataset  
+- SQL Window Functions & CTEs  
+- Git & GitHub  
+
+---
+
+## How to Run the Project
 
 1. Clone the repository  
-2. Load SQL scripts from the `database/` and `query/` folders  
-3. Execute schema scripts first  
-4. Run analytics queries phase by phase  
-5. Review visual outputs in the `images/` directory
+2. Restore the database or create tables using the schema script  
+3. Load CSV files if needed  
+4. Execute the SQL analysis scripts  
+5. Review outputs and insights  
 
 ---
 
-📁 **Project Structure**
-```text
-hospital_patients_analysis/
-│── database/
-│── query/
-│── images/
-│── README.md
+## Database Backups
+
+This project includes **two SQL Server backup files (.bak)**:
+
+- **Uncleaned Database Backup** — raw imported data  
+- **Cleaned Database Backup** — validated and transformed data  
+
+These backups allow reviewers to restore and inspect both data states easily without rerunning the full ETL process.
+
+---
