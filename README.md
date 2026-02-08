@@ -2,8 +2,8 @@
 
 ![Project Banner](images/banner.jpg)
 
-An intermediate SQL analytics portfolio project focused on healthcare operations and patient records.  
-This project demonstrates database design, data quality validation, multi-table analysis, window functions, and healthcare insight generation using real hospital data.
+##An intermediate SQL analytics portfolio project focused on healthcare operations and patient records.  
+### This project demonstrates database design, data quality validation, multi-table analysis, window functions, and healthcare insight generation using real hospital data.
 ---
 
 ## 📑 Table of Contents
