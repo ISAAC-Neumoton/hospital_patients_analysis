@@ -98,7 +98,7 @@ All columns were reviewed prior to analysis to ensure correct interpretation.
 
 ### Missing Data Audit
 
-Critical fields such as diagnosis, discharge dates, and insurance attributes were audited for missing values.
+All field were audited for missing values. The following results correspond to Patients_demographics, Procedure and Admission tables respectively.
 
 ![Missing Data Audit](images/data_quality_unpivot.png)
 
