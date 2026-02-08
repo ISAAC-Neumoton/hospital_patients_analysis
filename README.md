@@ -78,7 +78,7 @@ All columns were reviewed prior to analysis to ensure correct interpretation.
 
 ## Entity Relationship Diagram (ERD)
 
-![ER Diagram](images/er_diagram.jpeg)
+![ER Diagram](images/erd_diagram.jpeg)
 
 ---
 
