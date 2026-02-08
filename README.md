@@ -138,7 +138,7 @@ This check identifies **procedures that do not have a matching admission record*
 
 Patients with more than five admissions were identified as high utilizers.
 
-![Super Utilizers](images/super_utilizers.png)
+![Super Utilizers](images/super_utliizers.png)
 
 ### Demographic Utilization Trends
 
