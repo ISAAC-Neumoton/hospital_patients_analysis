@@ -197,6 +197,8 @@ This check identifies **procedures that do not have a matching admission record*
 
 ### Age Group Segmentation
 
+My logic covered the three age group segmentation. But the analysis shows that the Pediatric (0–17 years) had no encounter.
+
 ![Age Group Segmentation](images/age_group_segmentation.png)
 
 ---
