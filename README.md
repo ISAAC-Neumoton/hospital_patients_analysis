@@ -1,4 +1,4 @@
-# Hospital Patient Record System — SQL Analytics Portfolio Project
+# Hospital PatientAnalysis
 
 ![Project Banner](images/banner.jpg)
 
