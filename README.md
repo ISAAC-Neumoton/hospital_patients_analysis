@@ -54,7 +54,7 @@ The analysis mirrors real hospital data workflows handled by healthcare analytic
 
 ## Business Objectives
 
-- Analyze patient demographics and admission behavior  
+- Analyze patient demographics and admission behaviour  
 - Measure departmental utilization and efficiency  
 - Identify high-risk and high-resource patients  
 - Evaluate insurance usage and claim distributions  
@@ -69,7 +69,7 @@ The dataset is sourced from Kaggle and represents a hospital patient record syst
 - Patient demographics  
 - Admission and discharge records  
 - Diagnoses and procedures  
-- Department and encounter details  
+- Encounter details  
 - Insurance and billing information  
 
 All columns were reviewed prior to analysis to ensure correct interpretation.
