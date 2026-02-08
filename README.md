@@ -104,9 +104,7 @@ All field were audited for missing values. The following results correspond to P
 
 ### Orphan Record Detection (Admissions vs. Procedures)
 
-This check identifies **procedures that do not have a matching admission record**, ensuring referential integrity between clinical events.
-
-![Orphan Records](images/race_procedure_check.png)
+This check identifies **procedures that do not have a matching admission record**, ensuring referential integrity between clinical events.  **NILL**
 
 ---
 
